@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MastaTech Solutions: Digital Goverment & cyber Services, Tech Training in Computer Applications, programming, web Development, data analytics and more.">
+  <title>MastaTech Solutions</title>
+  <style>
+    /* Basic Reset & Styling */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover {
+      /*text-decoration: underline;*/
+      color: #4facfe;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    .logo{
+    display: flex;
+    /*flex-direction: column; /*text below logo*/
+    align-items: center;
+    gap: 10px;
+}
+.logo img{
+    height: 100px;
+    width: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 24px;
+      height: 20px;
+      justify-content: space-between;
+    }
+    .menu-toggle span {
+      background: white;
+      height: 3px;
+      border-radius: 2px;
+    }
+    nav {
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #1e3a8a;
+        width: 150px;
+        display: none;
+        border-radius: 0 0 6px 6px;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    #home {
+      background-color: #dbeafe;
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+    #home h2 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    #home p {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+    }
+    #home a {
+      display: inline-block;
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s;
+    }
+    #home a:hover {
+      background-color: #1d4ed8;
+    }
+
+    section {
+      padding: 4rem 1rem;
+    }
+    h3.section-title {
+      font-size: 1.875rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: #4facfe;
+    }
+    .grid-3 {
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 767px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card h4 {
+      font-weight: bold;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      margin: 0;
+    }
+    #tutoring {
+      background-color: #eff6ff;
+    }
+
+    form {
+      max-width: 672px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.3s;
+    }
+    form input[type="text"]:invalid,
+    form input[type="email"]:invalid,
+    form select:invalid,
+    form textarea:invalid {
+      border-color: #dc2626; /* red */
+    }
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form select:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #2563eb; /* blue */
+      box-shadow: 0 0 0 2px rgba(37,99,235,0.3);
+    }
+    form button {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    form button:hover {
+      background-color: #1d4ed8;
+    }
+
+    footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 1rem 1rem;
+      font-size: 0.9rem;
+    }
+    .btn{
+      background-color: #1e3a8a;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-align: center;
+      display : inline-block;
+      margin-top : 10px;
+}
+.contact{
+  text-align: center;
+}
+
+.btn:hover{
+    background-color: #1d4ed8;
+}
+.why {
+    text-align: left;
+    padding: 40px 20px;
+    max-width: 500px;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+
+}
+
+.why h3{
+    color: #4facfe;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+
+.why ul{
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.why ul li{
+    list-style-type: none;
+    list-style-position: inside;
+    margin-bottom: 10px;
+    
+}
+
+.why ul li::before{
+    content: "\2714  ";
+    color: #4facfe;
+    font-weight: bold;
+}
+section{
+    padding: 80px 20px;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrapper">
+      <!--<h1>MastaTech</h1>-->
+      <div class="logo">
+        <a href="#home" style="text-decoration: none;"><img src="mastatech.png" alt="mastatech_logo"></a>
+    </div>
+      <nav>
+        <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us </a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#tutoring">Tutoring</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mastatechlogin.html">Login</a></li>
+          <li><a href="mastatechfeedback.html">Feedback</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home">
+    <h2>Welcome to MastaTech</h2>
+    <p>Your online partner for cyber services and personalized tutoring.</p>
+    <a href="#contact">Get Started</a>
+  </section>
+ 
+  <section id="about" class="about">
+    <h2 style="color: #4facfe; font-size: 32px; text-align: center;">About Us</h2>
+    <p>MastaTech Solutions Provides expert online cyber services and 
+        Training in Computer Applications(Ms Office Packages), 
+        programming Languages, Web Development, Database management, 
+        Statistical/Mathematical softwares and data analytics. Our mission is to 
+        equip individuals and businesses with the latest tech skills.
+    </p>
+</section>
+
+  <section id="services" class="container">
+    <h3 class="section-title">Government & Cyber Services</h3>
+    <div class="grid-3">
+      <div class="card">
+        <h4>KRA Returns</h4>
+        <p>Assistance with filing tax returns and KRA PIN applications.</p>
+      </div>
+      <div class="card">
+        <h4>SHA/NSSF Registration</h4>
+        <p>Get registered and updated with national health and social funds.</p>
+      </div>
+      <div class="card">
+        <h4>KUCCPS & HELB Help</h4>
+        <p>Application support for students joining higher education.</p>
+      </div>
+      <div class="card">
+        <h4>TSC Application</h4>
+        <p>Guidance through teacher registration and job applications.</p>
+      </div>
+      <div class="card">
+        <h4>Certificate Downloads</h4>
+        <p>Help accessing KRA, NHIF, or academic certificates online.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tutoring" class="container">
+    <h3 class="section-title">Tutoring Services</h3>
+    <div class="grid-3">
+      <div class="card">
+        <h4>Web Development</h4>
+        <p>Learn HTML, CSS, JavaScript, and how to build real websites.</p>
+      </div>
+      <div class="card">
+        <h4>Programming Languages</h4>
+        <p>Master Python, JavaScript, and foundational programming concepts.</p>
+      </div>
+      <div class="card">
+        <h4>Math & Statistics</h4>
+        <p>Get tutoring in high school or university-level mathematics and Statistics.</p>
+      </div>
+    </div>
+  </section>
+  <section id="why" class="why">
+    <h3>Why choose Us?</h3>
+    <ul>
+        <li>Hands on, personalized learning.</li>
+        <li>Learn at your pace, online or in-person.</li>
+        <li>Affordable and student-friendly.</li>
+    </ul>
+
+</section>
+  <section id="contact" class="container">
+    <h3 class="section-title">Book a Service or Tutoring Session</h3>
+    <form id="contactForm" action="https://formsubmit.co/ptechcyberspace5@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_captcha" value="false" />
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required minlength="3" placeholder="Your full name"/>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="you@example.com"
+      />
+
+      <label for="service">Service Required</label>
+      <select id="service" name="service" required>
+        <option value="" disabled selected>Select a service</option>
+        <option>Cyber Services</option>
+        <option>Computer Packages-Ms Office suite</option>
+        <option>Tutoring - Programming</option>
+        <option>Tutoring - Web Development</option>
+        <option>Tutoring - Math/Statistics</option>
+        <option >Scientific Tools - MATLAB,SPSS,LaTeX,R</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" placeholder="Additional details (optional)"></textarea>
+
+      <button type="submit">Send Request</button>
+    </form>
+    <!--<a href="https://wa.me/0100314939?text=Hi%20MastaTech,%20I%20would%20like%20to%20book%20a%20session." target="_blank"
+      rel="noopener"
+      class="whatsapp-button"
+      >Chat with us on WhatsApp</a>-->
+  </section>
+  <section id="contact" class="contact">
+    <h2 style="color: #4facfe; font-size: 32px; text-align: center;">Get in Touch with Us</h2>
+    <p style=" text-align: center;">Have questions or need our services? Contact Us Today</p>
+    <a href="#contact" class="btn">Contact Us</a>
+    <a href="mailto:ptechcyberspace5@gmail.com" class="btn">Email Us</a>
+    <a href="https://wa.me/0100314939?text=Hi%20MastaTech,%20I%20would%20like%20to%20book%20a%20session." 
+    class="btn" target="_blank" rel="noopener noreferrer">Chat with us on WhatsApp</a>
+</section>
+
+  <footer>
+    <p>&copy; 2025 MastaTech Solutions. All rights reserved.</p>
+  </footer>
+
+  <script>
+  // Toggle mobile menu
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+
+// Allow keyboard toggle (Enter key)
+menuToggle.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    navLinks.classList.toggle('show');
+  }
+});
+
+// Form validation and submission handling
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit', (e) => {
+  // Clear previous errors (if you want to add error display later)
+
+  // Simple validation checks
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const service = form.service.value;
+
+  let valid = true;
+
+  if (name.length < 3) {
+    alert('Please enter your full name (at least 3 characters).');
+    valid = false;
+  }
+
+  // Basic email regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address.');
+    valid = false;
+  }
+
+  if (!service) {
+    alert('Please select a service.');
+    valid = false;
+  }
+
+  if (!valid) {
+    e.preventDefault();
+  }
+});
+</script>
